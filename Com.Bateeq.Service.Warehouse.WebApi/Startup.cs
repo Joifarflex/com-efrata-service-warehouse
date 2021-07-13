@@ -80,6 +80,7 @@ namespace Com.Bateeq.Service.Warehouse.WebApi
             APIEndpoint.Sales = Configuration.GetValue<string>(Constant.SALES_ENDPOINT) ?? Configuration[Constant.SALES_ENDPOINT];
             APIEndpoint.Auth = Configuration.GetValue<string>(Constant.AUTH_ENDPOINT) ?? Configuration[Constant.AUTH_ENDPOINT];
             APIEndpoint.GarmentProduction = Configuration.GetValue<string>(Constant.GARMENT_PRODUCTION_ENDPOINT) ?? Configuration[Constant.GARMENT_PRODUCTION_ENDPOINT];
+            APIEndpoint.POS = Configuration.GetValue<string>(Constant.POS_ENDPOINT) ?? Configuration[Constant.POS_ENDPOINT];
 
             AuthCredential.Username = Configuration.GetValue<string>(Constant.USERNAME) ?? Configuration[Constant.USERNAME];
             AuthCredential.Password = Configuration.GetValue<string>(Constant.PASSWORD) ?? Configuration[Constant.PASSWORD];
@@ -150,7 +151,7 @@ namespace Com.Bateeq.Service.Warehouse.WebApi
             string env = Configuration.GetValue<string>(Constant.ASPNETCORE_ENVIRONMENT);
             string connectionStringLocalCashFlow = Configuration.GetConnectionString("LocalDbCashFlowConnection") ?? Configuration["LocalDbCashFlowConnection"];
             APIEndpoint.ConnectionString = Configuration.GetConnectionString("DefaultConnection") ?? Configuration["DefaultConnection"];
-
+            
             /* Register */
             //services.AddDbContext<PurchasingDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDbContext<WarehouseDbContext>(options => options.UseSqlServer(connectionString, sqlServerOptions => sqlServerOptions.CommandTimeout(1000 * 60 * 20)));
